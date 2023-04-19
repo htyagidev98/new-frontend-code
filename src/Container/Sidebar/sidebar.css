@@ -1,0 +1,68 @@
+/* Sidebar css start */
+
+.Sidebar_Wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: black;
+  width: 200px;
+  padding: 6px;
+  border-right: 1px solid red;
+  box-shadow: 2px 3px 4px 6px gray;
+}
+
+
+span.profile_img img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.Sidebar_Wrapper .nav_list {
+  list-style-type: none;
+  margin-top: 10px;
+  font-size: 14px;
+
+}
+
+.img_fluids {
+  width: 20px;
+  height: 20px;
+}
+
+
+.float_right {
+  float: right !important;
+  margin-right: 9px;
+}
+
+.profile_member {
+  font-weight: 800;
+}
+
+.profile_member {
+  margin-left: 18px;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
+
+.actives {
+  transition: all 0.3s linear;
+  padding: 5px;
+
+
+}
+
+.actives:hover {
+  background-color: gray;
+}
+
+.doverflow {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+}
