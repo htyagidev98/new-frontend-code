@@ -17,9 +17,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { getFormData } from "../../Redux/Slices/ContactSlice";
 const ContactTable = () => {
   const[createContactModal, setCreateContactModal]= useState(false)
-
+  
   const dispatch= useDispatch(); 
-  const {formData, sidebarData} = useSelector((state)=> state.contact);
+  const {formData, sidebarData, categoryName} = useSelector((state)=> state.contact);
+  
+  let categoryData=  sidebarData[0]?.category;
+  const [flag,setFlag]=useState(true);
+
+
+ const data= formData.map((curElm)=>{
+    return curElm.length    
+  })
+
   
    
   //  const catData= sidebarData[0]?.category
@@ -31,15 +40,21 @@ const ContactTable = () => {
     let cat=sidebarData[0]?.category;
     const res= await axios.get(`http://localhost:5100/contact/contact/list?category=${cat}`)
     const mainData= res.data.responseData.contactList;
+    
     dispatch(getFormData(mainData));
    }
 
    useEffect(()=>{
+    if(categoryName == categoryData){
+      setFlag(true);
+    }else{
+      setFlag(false);
+    }
     test();
    
-   },[sidebarData])
-
-
+   },[sidebarData,categoryName])
+   
+   
 
   return (
     <div>
@@ -55,7 +70,8 @@ const ContactTable = () => {
                   <span>
                     <img src={bank} alt="bank_ing" className="handw" />{" "}
                   </span>
-                  <span className="crypto_text">Crypto experts </span>
+                 {flag? <span className="crypto_text text-capitalize">{categoryData}</span>:
+                  <span className="crypto_text text-capitalize">{categoryName?.category}  </span>}
                 </div>
 
                 <div className="table_header me-3 d-flex justify-content-between align-items-center">
@@ -75,8 +91,8 @@ const ContactTable = () => {
                         className="img_fluids text-white me-2"
                       />{" "}
                     </span>{" "}
-                    <span className="fw-bold me-2">List</span>{" "}
-                    <span className="span_child_button">69 PEOPLE</span>{" "}
+                    <span className="fw-bold me-2 f-13">List</span>{" "}
+                    <span className="span_child_button">{data} PEOPLE</span>{" "}
                   </div>
                 </div>
                 <div className="right_data">

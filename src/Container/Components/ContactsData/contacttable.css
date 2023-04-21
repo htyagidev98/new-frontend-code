@@ -17,14 +17,22 @@
  
 }
 
+.f-13{
+  font-size: 13px;
+}
+
 
 
 
 .span_child_button{
   border: 1px solid gray;
   border-radius: 7px;
-  background-color: gray;
+  
   padding: 3px 12px;
+  font-size: 13px;
+  background: white;
+  color: black;
+  font-weight: 700;
 }
 
 .crypto_text{

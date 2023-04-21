@@ -7,6 +7,7 @@ const initialState={
     returnModalData:{},
     formData:[],
     sidebarData:[],
+    categoryName:{}
 }   
 
 export const ContactSlice=createSlice({
@@ -40,6 +41,10 @@ export const ContactSlice=createSlice({
 
         getSidebarData:(state,action)=>{
           state.sidebarData= action.payload
+        },
+
+        getCategoryName:(state, action)=>{
+          state.categoryName= action.payload
         }
 
         // setRoute:(state, action)=>{
@@ -50,6 +55,6 @@ export const ContactSlice=createSlice({
 });
 
 
-export const {addContact, setToken,addReminderArray, getReturnReminderData, clearReturnModalData, getFormData, getSidebarData} = ContactSlice.actions;
+export const {addContact, setToken,addReminderArray, getReturnReminderData, clearReturnModalData, getFormData, getSidebarData, getCategoryName} = ContactSlice.actions;
 
 export default ContactSlice.reducer;

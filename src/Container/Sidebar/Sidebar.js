@@ -12,7 +12,7 @@ import './sidebar.css';
 import CategoryModal from '../Components/Categories/CategoryModal';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { getFormData,getSidebarData } from '../Redux/Slices/ContactSlice';
+import { getCategoryName, getFormData,getSidebarData } from '../Redux/Slices/ContactSlice';
 const Sidebar = () => {
     const [show, setShow] = useState(true);
     const [categoryModal, setCategoryModal] = useState(false);
@@ -35,14 +35,18 @@ const Sidebar = () => {
     }
 
   const listHandler= async(data)=>{
-    
+      dispatch(getCategoryName(data))
       const res= await axios.get(`http://localhost:5100/contact/contact/list?category=${data.category}`)
       const mainData= res.data.responseData.contactList;
       
       dispatch(getFormData(mainData));
     }
+    const test=()=>{
+        dispatch(getCategoryName('tester'))
+    }
 
     useEffect(() => {
+        test();
         fetchCategoryData();
     }, [])
 
